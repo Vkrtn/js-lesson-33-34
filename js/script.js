@@ -22,21 +22,28 @@ btn.addEventListener("click", (el) => {
     })
 
     defore.addEventListener('click',el=>{
-        let clonedNode = document.createElement('div')
-        clonedNode.className = 'item';
+        const clonedNode = item.cloneNode(true);
         clonedNode.innerText = `${this.innerText} -c`
-        if (this.classList.contains('active'))this.before(clonedNode)
-    })   
+        if (this.classList.contains('active')){
+            this.before(clonedNode)
+            this.classList.remove('active')
+            clonedNode.classList.remove('active')
+        }})   
+
      after.addEventListener('click',el=>{
-        let clonedNode = document.createElement('div')
-        clonedNode.className = 'item';
+        const clonedNode = item.cloneNode(true);
         clonedNode.innerText = `${this.innerText} -c`
-        if (this.classList.contains('active'))this.after(clonedNode)
+        if (this.classList.contains('active')){
+            this.after(clonedNode)
+            this.classList.remove('active');
+            clonedNode.classList.remove('active')
+        }
     })
   };
-
   box.append(item);
 });
+
+
 
 
 
